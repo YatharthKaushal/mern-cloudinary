@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import Assignment from "./pages/Assignment";
 import Submission from "./pages/Submission";
 
@@ -8,8 +8,15 @@ function App() {
 
   return (
     <>
-      <Assignment />
-      <Submission />
+      <main>
+        <section>
+          <Assignment />
+        </section>
+
+        <section>
+          <Submission />
+        </section>
+      </main>
     </>
   );
 }
