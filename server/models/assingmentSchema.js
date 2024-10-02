@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const submission = require("./submission");
 
 const assignmentSchema = new mongoose.Schema({
   title: {
@@ -8,19 +7,16 @@ const assignmentSchema = new mongoose.Schema({
   subject: {
     type: String,
   },
-  video: {
+  file_type: {
+    // * secure_url
     type: String,
   },
-  pdf: {
+  file_url: {
+    // * secure_url
     type: String,
   },
-  cloudinary_id_img: {
-    type: String,
-  },
-  cloudinary_id_vid: {
-    type: String,
-  },
-  cloudinary_id_pdf: {
+  cloudinary_file_id: {
+    //* public_id
     type: String,
   },
   assignment_date: {
@@ -29,7 +25,6 @@ const assignmentSchema = new mongoose.Schema({
   },
   submission_date: {
     type: Date,
-    default: Date.now(),
   },
   /* 
   * assignment for which class
@@ -49,9 +44,9 @@ module.exports = mongoose.model("Assignment", assignmentSchema);
 /*
 * In the code, secure_url and public_id are properties returned by Cloudinary after a successful file upload. Here's what they represent:
 
-?secure_url: (name, video, pdf)
+?secure_url: (file_url)
 It's the direct link to the file stored on Cloudinary, which can be used to embed the image, video, or PDF in a website or application.
 
-?public_id: (cloudinary_id_img, cloudinary_id_vid, cloudinary_id_pdf)
+?public_id: (cloudinary_file_id)
 It can be used to reference the file later, such as for updating or deleting it from Cloudinary. The public_id helps Cloudinary manage the file.
 */

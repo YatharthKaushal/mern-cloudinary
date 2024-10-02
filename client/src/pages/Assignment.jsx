@@ -11,8 +11,13 @@ const Assignment = () => {
 
       console.log("> BACKEND_URL from .env: ", BACKEND_URL);
       const data = new FormData();
-
+      const details = {
+        title: "Title",
+        subject: "Subject",
+        submissionDate: Date.now(),
+      };
       data.append("uploaded_File", file);
+      data.append("details", JSON.stringify(details));
       console.log("> file[0]: ", file);
 
       // http://localhost:3000/
