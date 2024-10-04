@@ -5,19 +5,16 @@ const submissionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Assignment", // This refers to the Assignment schema
   },
-  video: {
+  file_type: {
+    // * secure_url
     type: String,
   },
-  pdf: {
+  file_url: {
+    // * secure_url
     type: String,
   },
-  cloudinary_id_img: {
-    type: String,
-  },
-  cloudinary_id_vid: {
-    type: String,
-  },
-  cloudinary_id_pdf: {
+  cloudinary_file_id: {
+    //* public_id
     type: String,
   },
   submission_date: {

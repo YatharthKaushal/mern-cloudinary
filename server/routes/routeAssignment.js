@@ -8,6 +8,7 @@ router.post("/", upload.single("uploaded_File"), async (req, res) => {
 
   const cloudinaryAssignmentFolder = "Assignments";
   const details = await JSON.parse(req.body.details);
+
   try {
     fileUpload = await cloudinaryUpload(req, cloudinaryAssignmentFolder);
 
@@ -29,6 +30,15 @@ router.post("/", upload.single("uploaded_File"), async (req, res) => {
     res.status(500).json({ error: "Upload failed" });
 
     //
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    let assignment = await Assignment.find();
+    res.json(assignment);
+  } catch (err) {
+    console.log(err);
   }
 });
 

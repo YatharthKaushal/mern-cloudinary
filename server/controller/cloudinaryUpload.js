@@ -6,8 +6,8 @@ const cloudinaryUpload = async (req, cloudinaryFolder) => {
   const fileName = req.file.filename;
   const fileExt = fileName.split(".")[1];
   const filePath = path.resolve(__dirname, "../uploads", fileName);
+  let fileUpload;
   try {
-    let fileUpload;
     console.log("> req.files: ", req.file);
     console.log("> fileName: ", fileName, "\n> ext: ", fileExt);
 
@@ -25,7 +25,6 @@ const cloudinaryUpload = async (req, cloudinaryFolder) => {
         pages: true,
         folder: cloudinaryFolder,
       });
-
     return fileUpload;
   } catch (error) {
     console.log("> cloudinaryUpload - trycatch: ", error);
